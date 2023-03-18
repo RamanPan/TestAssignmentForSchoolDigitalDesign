@@ -1,0 +1,2 @@
+# TestAssignmentForSchoolDigitalDesign
+Выполненное тестовое задание
