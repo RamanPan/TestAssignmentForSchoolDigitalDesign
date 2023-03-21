@@ -28,32 +28,32 @@ public class DoCondition {
 
     public static boolean moreCondition(String key, String value, Map<String, Object> row) throws NullPointerException {
         return switch (key) {
-            case "id", "age" -> Integer.parseInt(value) > Integer.parseInt(row.get(key).toString());
-            case "cost" -> Double.parseDouble(value) > Double.parseDouble(row.get(key).toString());
-            default -> false;
-        };
-    }
-
-    public static boolean lessCondition(String key, String value, Map<String, Object> row) throws NullPointerException {
-        return switch (key) {
             case "id", "age" -> Integer.parseInt(value) < Integer.parseInt(row.get(key).toString());
             case "cost" -> Double.parseDouble(value) < Double.parseDouble(row.get(key).toString());
             default -> false;
         };
     }
 
+    public static boolean lessCondition(String key, String value, Map<String, Object> row) throws NullPointerException {
+        return switch (key) {
+            case "id", "age" -> Integer.parseInt(value) > Integer.parseInt(row.get(key).toString());
+            case "cost" -> Double.parseDouble(value) > Double.parseDouble(row.get(key).toString());
+            default -> false;
+        };
+    }
+
     public static boolean moreOrEqualCondition(String key, String value, Map<String, Object> row) throws NullPointerException {
         return switch (key) {
-            case "id", "age" -> Integer.parseInt(value) >= Integer.parseInt(row.get(key).toString());
-            case "cost" -> Double.parseDouble(value) >= Double.parseDouble(row.get(key).toString());
+            case "id", "age" ->  Integer.parseInt(row.get(key).toString()) >= Integer.parseInt(value);
+            case "cost" -> Double.parseDouble(row.get(key).toString()) >= Double.parseDouble(value);
             default -> false;
         };
     }
 
     public static boolean lessOrEqualCondition(String key, String value, Map<String, Object> row) throws NullPointerException {
         return switch (key) {
-            case "id", "age" -> Integer.parseInt(value) <= Integer.parseInt(row.get(key).toString());
-            case "cost" -> Double.parseDouble(value) <= Double.parseDouble(row.get(key).toString());
+            case "id", "age" -> Integer.parseInt(value) >= Integer.parseInt(row.get(key).toString());
+            case "cost" -> Double.parseDouble(value) >= Double.parseDouble(row.get(key).toString());
             default -> false;
         };
     }

@@ -19,7 +19,10 @@ public class Messages {
     public static final String UPDATE_SUCCESS = "Данные успешно обновлены";
     public static final String DELETE_SUCCESS = "Данные успешно удалены";
     public static final String SELECT_SUCCESS = "Выборка успешно составлена";
-    public static final String UPDATE_NOT_FOUND = "Ни одна строка не подошла под заданное условие";
+    public static final String UPDATE_NOT_FOUND = "Ни одна строка не подошла под заданное условие редактирования";
+
+    public static final String SELECT_NOT_FOUND = "Ни одна строка не подошла под заданное условие выборки";
+    public static final String DELETE_NOT_FOUND = "Ни одна строка не подошла под заданное условие удаления";
 
     private Messages() {}
 }

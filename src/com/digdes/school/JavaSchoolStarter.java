@@ -26,10 +26,16 @@ public class JavaSchoolStarter {
                     }
                 }
             } else {
-                for (Integer index : indexesRightRows) {
+                int sizeIndexes = indexesRightRows.size();
+                for (int k = 0; k < sizeIndexes; ++k) {
+                    Integer index = indexesRightRows.get(k);
                     row = collection.get(index);
                     if (!Utilities.determineCondition(key, condition, value, row)) {
                         indexesRightRows.remove(index);
+                        if (!indexesRightRows.isEmpty()) {
+                            k--;
+                            sizeIndexes--;
+                        }
                     }
                 }
             }
@@ -236,12 +242,15 @@ public class JavaSchoolStarter {
         else {
             List<String> keysConditionsValuesLogicOperators = getKeysConditionsValuesAndLogicOperators(wordsFromRequest);
             List<Integer> indexesRightRows = findRows(keysConditionsValuesLogicOperators);
-            for (int index : indexesRightRows) {
+            int size = indexesRightRows.size();
+            for (int i = 0; i < size; size--) {
+                int index = indexesRightRows.get(i);
                 deletedValues.add(collection.get(index));
                 collection.remove(index);
             }
+            if(size != 0) DialogUtil.showSuccessMessage(Messages.DELETE_SUCCESS);
+            else DialogUtil.showInfoMessage(Messages.DELETE_NOT_FOUND);
         }
-        DialogUtil.showSuccessMessage(Messages.DELETE_SUCCESS);
         return deletedValues;
     }
 
@@ -256,7 +265,8 @@ public class JavaSchoolStarter {
             List<Integer> indexesRightRows = findRows(keysConditionsValuesLogicOperators);
             for (int index : indexesRightRows) selectedValues.add(collection.get(index));
         }
-        DialogUtil.showSuccessMessage(Messages.SELECT_SUCCESS);
+        if (selectedValues.isEmpty()) DialogUtil.showInfoMessage(Messages.SELECT_NOT_FOUND);
+        else DialogUtil.showSuccessMessage(Messages.SELECT_SUCCESS);
         return selectedValues;
     }
 
